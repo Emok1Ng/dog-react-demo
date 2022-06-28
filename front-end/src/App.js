@@ -1,27 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
-import {wait} from "@testing-library/user-event/dist/utils";
 
 const types = ["jpg", "JPG", "gif", "GIF", "png", "PNG", "mp4", "MP4"]
 
 function App() {
     return (
         <div className="App">
-            <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-            </header>
+            <div className="container">
+                <div className="row">
+                    <div className="col"><img id="pic1" alt="" src="" width="100%" height="100%"/></div>
+                    <div className="col"><img id="pic2" alt="" src="" width="100%" height="100%"/></div>
+                    <div className="col"><img id="pic3" alt="" src="" width="100%" height="100%"/></div>
+                    <div className="col"><img id="pic4" alt="" src="" width="100%" height="100%"/></div>
+                </div>
+                <div className="row">
+                    <div className="col"><img id="pic5" alt="" src="" width="100%" height="100%"/></div>
+                    <div className="col"><img id="pic6" alt="" src="" width="100%" height="100%"/></div>
+                    <div className="col"><img id="pic7" alt="" src="" width="100%" height="100%"/></div>
+                    <div className="col"><img id="pic8" alt="" src="" width="100%" height="100%"/></div>
+                </div>
+            </div>
             <button type="submit" className="btn btn-info" onClick={getDogs}>Find More Dogs!</button>
         </div>
     );
@@ -42,7 +40,12 @@ async function getDogs(){
             console.log("Failed!")
         })
     }
-    console.log(dogUrls)
+    let count = 1
+    while(dogUrls.length !== 0){
+        document.getElementById("pic"+count).setAttribute("src", dogUrls.pop())
+        count++
+    }
+    return
 }
 
 export default App;
